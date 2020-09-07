@@ -56,26 +56,6 @@ def get_info(from_date, to_date):
     soup = BeautifulSoup(req.text, 'lxml')
     json_data = json.loads(json.loads(soup.text)['result'])
     return json_data
-def get_industry_info(code):
-    data = {'sym':code,
-            'token':'evLtsLsBNAUVTPxtGqVeGzuKTyqqvv/tuNGuh8znvWjZWf2VIZI3XZs9OjEU8ow3',
-            'lang':'chi',
-            'qid':'1599182450054',
-            'callback':'jQuery351028758495775630866_1599182442932',
-            '_':'1599182442933'}
-    url = 'https://www1.hkex.com.hk/hkexwidget/data/getequityquote?'+urlencode(data)
-    header = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:80.0) Gecko/20100101 Firefox/80.0'}
-    req = requests.get(url, headers=header,verify=False)
-    pattern_industry = re.compile('"hsic_ind_classification":"(.*?)".*?"hsic_sub_sector_classification":"(.*?)"',re.S)
-    results = re.findall(pattern_industry,req.text)
-    industry_list=[]
-    for result in results:
-        industry1,industry2 = result[0].split(' - ')
-        industry3 = result[1]
-        industry_list.append(industry1)
-        industry_list.append(industry2)
-        industry_list.append(industry3)
-    return industry_list
 def get_dataframe():
     date_time = []
     stock_code = []
