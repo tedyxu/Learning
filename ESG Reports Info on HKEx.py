@@ -8,7 +8,7 @@ import re
 #去除warning
 urllib3.disable_warnings()
 def get_report_numbers(start_date, to_date):
-    # 披露易搜索网站的求情头
+    # 披露易搜索网站的请求头
     header = {"origin": 'https://www.hkexnews.hk',
               "referer": 'https://www.hkexnews.hk/index_c.htm',
               "user-agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36'
